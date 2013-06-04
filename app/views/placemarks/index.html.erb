@@ -1,8 +1,14 @@
-<h1>History Near You!</h1>
-<div>
-  <% @placemarks.each do |placemark| %>
-    <a href="<%= placemark.getFullURL %>">
-      <img src="<%= placemark.getThumbURL %>"/>
-    </a>
-  <% end %>
+<div class="container">
+  <h1>History Near You!</h1>
+  <div>
+    <% @placemarks.each do |placemark| %>
+      <a href="<%= placemark.getFullURL %>">
+        <img src="<%= placemark.getThumbURL %>"/>
+      </a>
+    <% end %>
+  </div>
+  <div class="footer clearfix">
+    <%= image_tag 'NYPL_logo1_white_rev.jpg', :id=>"logo" %>
+    <p>made at the NYPL Historial Geolocation Hackathon</p>
+  </div>
 </div>

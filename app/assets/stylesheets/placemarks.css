@@ -1,7 +1,40 @@
+.container {
+	background: black;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+	width: 100%;
+}
 img {
 	float: left;
 	width: 33%;
 }
 div {
-	padding: 5px;
+
+}
+#logo {
+	width: 25%;
+}
+h1 {
+	padding: 20px;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+/* reset */
+* {
+	padding: 0;
+	margin: 0;
+}
+/* clearfix */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
 }
