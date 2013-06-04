@@ -1,29 +1,8 @@
 
 
 
-
-<h1>Listing placemarks</h1>
-
-<table>
-  <tr>
-    <th>Latlon</th>
-    <th>Year</th>
-    <th>Year2</th>
-    <th>Slug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @placemarks.each do |placemark| %>
-  <tr>
-    <td><%= placemark.latlon %></td>
-    <td><%= placemark.year %></td>
-    <td><%= placemark.year2 %></td>
-    <td><%= placemark.slug %></td>
-    <td><%= link_to 'Show', placemark %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<div>
+  <% @placemarks.each do |placemark| %>
+      <img src="<%= placemark.getFullURL %>"/>
+  <% end %>
+</div>
