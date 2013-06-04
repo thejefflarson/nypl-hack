@@ -13,8 +13,8 @@ class CheckinController < ApplicationController
     p Net::HTTP.post_form url, {:url => ours, :CHECKIN_ID => id, :text => "Awesome!"}
 
     respond_to do |format| 
+      format.html { render text: "okay" }
       format.json { render json: json }
     end
-
   end
 end
