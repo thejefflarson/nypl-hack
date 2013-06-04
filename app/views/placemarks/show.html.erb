@@ -19,7 +19,14 @@
   <b>Slug:</b>
   <%= @placemark.slug %>
 </p>
-
+<p>
+  <b>ThumbURL:</b>
+  <%= @placemark.getThumbURL %>
+</p>
+<p>
+  <b>FullURL:</b>
+  <%= @placemark.getFullURL %>
+</p>
 
 <%= link_to 'Edit', edit_placemark_path(@placemark) %> |
 <%= link_to 'Back', placemarks_path %>
