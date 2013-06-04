@@ -1,5 +1,6 @@
 NyplData::Application.routes.draw do
   get "checkin/index"
+  match "/checkin/" => "checkin#index"
 
   resources :placemarks
 
