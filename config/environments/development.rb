@@ -1,6 +1,4 @@
 NyplData::Application.configure do
-  config.action_controller.relative_url_root = '/nypl-hack'
-
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
