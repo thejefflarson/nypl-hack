@@ -22,12 +22,8 @@
     <td><%= placemark.year2 %></td>
     <td><%= placemark.slug %></td>
     <td><%= link_to 'Show', placemark %></td>
-    <td><%= link_to 'Edit', edit_placemark_path(placemark) %></td>
-    <td><%= link_to 'Destroy', placemark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Placemark', new_placemark_path %>
