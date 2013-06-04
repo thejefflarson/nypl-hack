@@ -35,6 +35,15 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
+    foursquare2 (1.9.7)
+      faraday (~> 0.8)
+      faraday_middleware (>= 0.8)
+      hashie (>= 1.0, < 3.0.0)
+    hashie (2.0.5)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -47,6 +56,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.6)
+    multipart-post (1.2.0)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -99,6 +109,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
+  foursquare2
   jquery-rails
   pg
   rails (= 3.2.13)
