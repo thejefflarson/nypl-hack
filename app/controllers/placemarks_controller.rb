@@ -9,4 +9,15 @@ class PlacemarksController < ApplicationController
       format.json { render json: @placemarks }
     end
   end
+
+  # GET /placemarks/1
+  # GET /placemarks/1.json
+  def show
+    @placemark = Placemark.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @placemark }
+    end
+  end
 end
