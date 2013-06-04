@@ -1,4 +1,3 @@
-
 brew install postgres postgis
 
 rake db:create
