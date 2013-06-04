@@ -21,11 +21,13 @@
 </p>
 <p>
   <b>ThumbURL:</b>
-  <%= @placemark.getThumbURL %>
+  <%= link_to @placemark.getThumbURL, @placemark.getThumbURL %>
+  <br/><img src="<%= @placemark.getThumbURL %>"/>
 </p>
 <p>
   <b>FullURL:</b>
-  <%= @placemark.getFullURL %>
+  <%= link_to @placemark.getFullURL, @placemark.getFullURL %>
+  <br/><img src="<%= @placemark.getFullURL %>"/>
 </p>
 
 <%= link_to 'Edit', edit_placemark_path(@placemark) %> |
