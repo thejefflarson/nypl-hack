@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  latlon: 
+  year: 1
+  year2: 1
+  slug: 
+
+two:
+  latlon: 
+  year: 1
+  year2: 1
+  slug: 
