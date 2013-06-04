@@ -1,5 +1,8 @@
+<h1>History Near You!</h1>
 <div>
   <% @placemarks.each do |placemark| %>
-      <img src="<%= placemark.getFullURL %>"/>
+    <a href="<%= placemark.getFullURL %>">
+      <img src="<%= placemark.getThumbURL %>"/>
+    </a>
   <% end %>
 </div>
