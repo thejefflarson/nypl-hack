@@ -1,33 +1,14 @@
-
-
-
-
-<h1>Listing placemarks</h1>
-
-<table>
-  <tr>
-    <th>Latlon</th>
-    <th>Year</th>
-    <th>Year2</th>
-    <th>Slug</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @placemarks.each do |placemark| %>
-  <tr>
-    <td><%= placemark.latlon %></td>
-    <td><%= placemark.year %></td>
-    <td><%= placemark.year2 %></td>
-    <td><%= placemark.slug %></td>
-    <td><%= link_to 'Show', placemark %></td>
-    <td><%= link_to 'Edit', edit_placemark_path(placemark) %></td>
-    <td><%= link_to 'Destroy', placemark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Placemark', new_placemark_path %>
+<div class="container">
+  <h1>History Near You!</h1>
+  <div>
+    <% @placemarks.each do |placemark| %>
+      <a href="<%= placemark.getFullURL %>">
+        <img src="<%= placemark.getThumbURL %>"/>
+      </a>
+    <% end %>
+  </div>
+  <div class="footer clearfix">
+    <%= image_tag 'NYPL_logo1_white_rev.jpg', :id=>"logo" %>
+    <p>made at the NYPL Historial Geolocation Hackathon</p>
+  </div>
+</div>

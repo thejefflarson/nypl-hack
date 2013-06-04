@@ -1,4 +1,6 @@
 NyplData::Application.configure do
+  config.action_controller.relative_url_root = '/nypl-hack'
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -15,7 +17,7 @@ NyplData::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
