@@ -1,4 +1,6 @@
 NyplData::Application.routes.draw do
+  get "checkin/index"
+
   resources :placemarks
 
 
