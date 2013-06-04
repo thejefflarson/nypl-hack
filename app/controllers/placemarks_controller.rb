@@ -2,7 +2,13 @@ class PlacemarksController < ApplicationController
   # GET /placemarks
   # GET /placemarks.json
   def index
-    @placemarks = Placemark.all
+    puts params[:q]
+    if params[:q]
+      latlon = params[:q]
+      @placemarks = Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(" + latlon + "),4269), latlon) DESC").limit(3)
+    else
+      @placemarks = Placemark.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
