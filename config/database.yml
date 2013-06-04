@@ -13,6 +13,7 @@ development:
 #whatever.
 production:
   adapter: postgis
+  username: mtigas
   database: nypl_hack
   host: localhost
   pool: 5
