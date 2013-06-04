@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'rgeo'
+gem 'rgeo-shapefile'
 gem 'activerecord-postgis-adapter'
 
 gem 'foursquare2'

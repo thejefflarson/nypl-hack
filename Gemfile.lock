@@ -32,6 +32,8 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    dbf (2.0.3)
+      fastercsv (~> 1.5.4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -39,6 +41,7 @@ GEM
       multipart-post (~> 1.1)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
+    fastercsv (1.5.5)
     foursquare2 (1.9.7)
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
@@ -89,6 +92,9 @@ GEM
       activerecord (>= 3.0.3)
       arel (>= 2.0.6)
       rgeo (>= 0.3.20)
+    rgeo-shapefile (0.2.3)
+      dbf (>= 1.7.0)
+      rgeo (>= 0.3.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -114,4 +120,5 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   rgeo
+  rgeo-shapefile
   uglifier (>= 1.0.3)

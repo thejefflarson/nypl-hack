@@ -5,3 +5,10 @@
 require File.expand_path('../config/application', __FILE__)
 
 NyplData::Application.load_tasks
+
+Rake::TaskManager.class_eval do
+  def delete_task(task_name)
+    @tasks.delete(task_name.to_s)
+  end
+  Rake.application.delete_task("db:test:purge")
+end
