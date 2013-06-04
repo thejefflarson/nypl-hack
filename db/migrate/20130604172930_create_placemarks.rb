@@ -1,10 +1,10 @@
 class CreatePlacemarks < ActiveRecord::Migration
   def change
     create_table :placemarks do |t|
-      t.spatial :latlon
+      t.spatial :latlon, :srid => 4269, :type => 'POINT'
       t.integer :year
       t.integer :year2
-      t.char :slug
+      t.string :slug
 
       t.timestamps
     end
