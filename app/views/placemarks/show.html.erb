@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latlon:</b>
+  <%= @placemark.latlon %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @placemark.year %>
+</p>
+
+<p>
+  <b>Year2:</b>
+  <%= @placemark.year2 %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @placemark.slug %>
+</p>
+<p>
+  <b>ThumbURL:</b>
+  <%= @placemark.getThumbURL %>
+</p>
+<p>
+  <b>FullURL:</b>
+  <%= @placemark.getFullURL %>
+</p>
+
+<%= link_to 'Edit', edit_placemark_path(@placemark) %> |
+<%= link_to 'Back', placemarks_path %>
