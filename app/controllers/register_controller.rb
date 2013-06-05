@@ -11,27 +11,21 @@ FOURSQ_PUSH_SECRET = 'XVTHZ2DZHCR2K5PZ3UBVQXBQUABKH3YO3BE5QUF4TEGHKTB5'
 #
 class RegisterController < ApplicationController
   def create
-    code = params['CODE']
+    redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
 
-    begin
-        client = OAuth2::Client.new(
-          FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET,
-          :authorize_url => "/oauth2/authorize",
-          :token_url => "/oauth2/access_token",
-          :authorize_path     => "/oauth2/authenticate?response_type=code",
-          :site => "https://foursquare.com/",
-            :parse_json => true
-        )
+    uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-        token = client.auth_code.get_token(code, :redirect_uri => "https://mike.tig.as/nypl-hack/register_callback")
-    rescue
-        raise
-        #token = nil
-    end
-    puts token
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = JSON.parse(http.request(request).body)
+    #access_token = OAuth2::AccessToken.new(client, response["access_token"])
+    puts response['access_token']
+    #puts access_token
 
     respond_to do |format|
-      format.html { render text: "Yay!\n#{token}" }
+      format.html { render text: "Yay!\n#{response['access_token']}" }
     end
   end
 end
