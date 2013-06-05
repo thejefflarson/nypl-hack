@@ -8,7 +8,6 @@ FOURSQ_CLIENT_ID = 'YWTUTS3OL0HWSULMMURGHIU51QDQ4LS5RLGXJDGV3NENV1JE'
 FOURSQ_CLIENT_SECRET = 'RXXELPAKSE4AXYADZIRHFHC5HIK4OIP5A115H1VHV0OLANCE'
 FOURSQ_PUSH_SECRET = 'XVTHZ2DZHCR2K5PZ3UBVQXBQUABKH3YO3BE5QUF4TEGHKTB5'
 
-#
 class RegisterController < ApplicationController
   def create
     redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
@@ -20,12 +19,18 @@ class RegisterController < ApplicationController
 
     request = Net::HTTP::Get.new(uri.request_uri)
     response = JSON.parse(http.request(request).body)
-    #access_token = OAuth2::AccessToken.new(client, response["access_token"])
-    puts response['access_token']
+    access_token = OAuth2::AccessToken.new(client, response["access_token"])
+    str_token = response['access_token']
     #puts access_token
 
+    user = access_token.get('https://api.foursquare.com/v2/users/self')
+    puts user.inspect
+    puts user.id
+
+    Accesstoken.create(:access_token => str_token, :user_id => user.id)
+
     respond_to do |format|
-      format.html { render text: "Yay!\n#{response['access_token']}" }
+      format.html { render text: "Yay!\n#{str_token}" }
     end
   end
 end

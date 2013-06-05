@@ -5,9 +5,13 @@ class CheckinController < ApplicationController
     json = JSON.parse(obj)
 
     id = json["id"]
+    user_id = json["user"]["id"]
     lat = json["venue"]["location"]["lat"]
     lng = json["venue"]["location"]["lng"]
     placemark_url = placemarks_url :q => "#{lat},#{lng}"
+
+    access = Accesstoken.where(:user_id = user_id).first
+    str_token = access.access_token
 
     puts obj
     puts "#{id}, #{lat}, #{lng}"
@@ -19,10 +23,11 @@ class CheckinController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     body_data = URI.encode_www_form(
-      "CHECKIN_ID" => id,
+      "url" => placemark_url,
+ sdlfkjwelkfjwekljfklwejf     "CHECKIN_ID" => id,
       "text" => "Awesome!",
-      "v" => 20130605,
-i      "url" => placemark_url
+      "oauth_token" => str_token,
+      "v" => 20130605
     )
 
     puts body_data
