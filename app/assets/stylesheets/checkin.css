@@ -32,8 +32,12 @@
 	color: white;
 }
 
+p.italics {
+	font-style: italic;
+}
+
 .homepage h1 {
-	font-family: 'Copse', serif;
+	font-family: 'Copse', 'Helvetica Neue', Helvetica, sans-serif;
 	background-color: transparent;
 	color: white;
 	font-size: 50px;
