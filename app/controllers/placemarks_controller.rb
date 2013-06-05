@@ -5,7 +5,9 @@ class PlacemarksController < ApplicationController
     puts params[:q]
     if params[:q]
       latlon = params[:q]
-      @placemarks = Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(" + latlon + "),4269), latlon) DESC").limit(3)
+      lat = latlon.split(',').first
+      lon = latlon.split(',').last
+      @placemarks = Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(#{lat.to_f}, #{lon.to_f}),4269), latlon) ASC").limit(3)
     else
       @placemarks = Placemark.all
     end
