@@ -8,7 +8,7 @@ class CheckinController < ApplicationController
     user_id = json["user"]["id"]
     lat = json["venue"]["location"]["lat"]
     lng = json["venue"]["location"]["lng"]
-    placemark_url = placemarks_url :q => "#{lat},#{lng}"
+    placemark_url = placemarks_url :q => "#{lng},#{lat}"
 
     access = Authtoken.where(:user_id => user_id).order("created_at DESC").first
     str_token = access.access_token

@@ -13,4 +13,14 @@ $(document).ready(function(){
 		window.location.href = "https://foursquare.com/app/nypl-time-traveller/CEWXPJBX0AFPI0Y3YC1JLKKQON4OOYHKSYFERVPTJDMK0MF5";
 	})
 
+	if (getURLParameter('success') == 1){
+		$('.connect-button').text("Success! You've connected!")
+	} else { }
+
+	function getURLParameter(name) {
+	    return decodeURIComponent(
+	        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+	    );
+	}
+
 })

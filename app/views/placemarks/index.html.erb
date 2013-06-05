@@ -10,6 +10,7 @@
             <a href="<%= placemark.getFullURL %>">
               <img src="<%= placemark.getFullURL %>"/>
             </a>
+            <div class="caption"><strong>Year:</strong> <%= placemark.year %></div>
           </div>
         <% end %>
       </div>
@@ -35,7 +36,7 @@ window.mySwipe = new Swipe(document.getElementById('slider'), {
   //speed: 400,
   //auto: 3000,
   continuous: true,
-  disableScroll: true,
+  disableScroll: false,
   stopPropagation: false,
   callback: function(pos) {
 
