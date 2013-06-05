@@ -3,6 +3,15 @@ class Placemark < ActiveRecord::Base
 
   BASE_URL = "http://images.nypl.org/index.php?id="
 
+  validate :image_resolves?
+
+  def image_resolves?
+    u = URI(getFullURL)
+    http = Net::HTTP.new(u.host, u.port)
+    resp = http.request_get(u.path)
+    
+    errors.add(:slug, "not a link") if resp.code == "404"
+  end
 
   def getThumbURL
     imageURL + "&t=b"
