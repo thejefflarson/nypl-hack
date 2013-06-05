@@ -22,7 +22,7 @@ class CheckinController < ApplicationController
       "url" => placemark_url,
       "CHECKIN_ID" => id,
       "text" => "Awesome!"
-    }
+    )
 
     puts body_data
 
