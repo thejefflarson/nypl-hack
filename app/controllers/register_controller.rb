@@ -3,14 +3,13 @@ FOURSQ_CLIENT_SECRET = ENV['FOURSQ_CLIENT_SECRET']
 
 class RegisterController < ApplicationController
   def create
+    # TODO
     redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
 
     uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    
 
     request = Net::HTTP::Get.new(uri.request_uri)
     response = JSON.parse(http.request(request).body)
@@ -30,16 +29,15 @@ class RegisterController < ApplicationController
 
     request = Net::HTTP::Get.new(self_url.request_uri)
     response = http.request(request)
-    puts response.body
+    #puts response.body
 
     json = JSON.parse(response.body)
     user_id = json['response']['user']['id']
-    puts user_id
+    #puts user_id
 
     Authtoken.create(:user_id => user_id, :access_token => str_token)
 
-    respond_to do |format|
-      format.html { render text: "Yay!\n#{str_token}" }
-    end
+    # TODO
+    redirect_to "https://mike.tig.as/nypl-hack/?success=1"
   end
 end
