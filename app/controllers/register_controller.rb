@@ -18,12 +18,15 @@ class RegisterController < ApplicationController
           FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET,
           :authorize_url => "/oauth2/authorize",
           :token_url => "/oauth2/access_token",
-          :site => "https://foursquare.com/"
+          :authorize_path     => "/oauth2/authenticate?response_type=code",
+          :site => "https://foursquare.com/",
+            :parse_json => true
         )
 
         token = client.auth_code.get_token(code, :redirect_uri => "https://mike.tig.as/nypl-hack/register_callback")
     rescue
-        token = nil
+        raise
+        #token = nil
     end
     puts token
 
