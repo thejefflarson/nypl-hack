@@ -19,10 +19,10 @@ class CheckinController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     body_data = URI.encode_www_form(
-      "url" => placemark_url,
       "CHECKIN_ID" => id,
       "text" => "Awesome!",
-      "v" => 20130605
+      "v" => 20130605,
+i      "url" => placemark_url
     )
 
     puts body_data
