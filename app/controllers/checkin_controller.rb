@@ -25,7 +25,7 @@ class CheckinController < ApplicationController
     body_data = URI.encode_www_form(
       "url" => placemark_url,
       "CHECKIN_ID" => id,
-      "text" => "See historical photos of nearby buildings from #{Placemark.gimme_photos(lat, lng).map(&:year).uniq.to_sentence}.",
+      "text" => "See historical photos of nearby buildings from #{Placemark.gimme_photos(lat, lng).map(&:year).uniq.sort.to_sentence}.",
       "oauth_token" => str_token,
       "v" => 20130605
     )
