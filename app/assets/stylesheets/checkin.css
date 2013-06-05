@@ -32,8 +32,9 @@
 	color: white;
 }
 
-p.italics {
+.homepage .main-text p.italics {
 	font-style: italic;
+	color: #ddd;
 }
 
 .homepage h1 {
