@@ -12,7 +12,12 @@ class RegisterController < ApplicationController
     code = params['CODE']
     url = URI("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&code=#{code}&redirect_uri=https://mike.tig.as/nypl-hack/register_callback/")
 
-    wut = Net::HTTP.get(url) rescue Errno::ECONNRESET
+    begin
+        wut = Net::HTTP.get(url)
+    rescue Errno::ECONNRESET
+        wut = nil
+    end
+    puts url
     puts wut
 
     respond_to do |format|
