@@ -37,12 +37,13 @@ h1 {
 }
 .caption {
   background: rgba(0,0,0,.6);
+  color: white;
   position: fixed;
-  top: 450px;
+  top: 20px;
   right: 0;
   padding: 10px;
   text-align: right;
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
 
