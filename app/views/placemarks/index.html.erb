@@ -1,15 +1,50 @@
 <div class="container">
   <h1>Historical Time Traveller</h1>
   <p>Tap any image for a larger view.</p>
-  <div class="clearfix">
+  <div id='slider' class='swipe'>
+  <div class="clearfix swipe-wrap">
     <% @placemarks.each do |placemark| %>
+      <div>
       <a href="<%= placemark.getFullURL %>">
-        <img src="<%= placemark.getThumbURL %>"/>
+        <img src="<%= placemark.getFullURL %>"/>
       </a>
+    </div>
     <% end %>
   </div>
+  <div style='text-align:center;padding-top:20px;'>
+  <ul id="position">
+  <li></li>
+<li></li>
+<li></li>
+  </ul>  
+  <button onclick='mySwipe.prev()'>prev</button> 
+  <button onclick='mySwipe.next()'>next</button>
+
+</div>
+</div>
   <div class="footer clearfix">
     <%= image_tag 'NYPL_logo1_white_rev.jpg', :id=>"logo" %>
     <p>Project created at the NYPL Historial Geolocation Hackathon by <a href="https://twitter.com/thejefflarson">Jeff Larson</a>, <a href="https://twitter.com/mtigas">Mike Tigas</a>, <a href="https://twitter.com/sisiwei">Sisi Wei</a> and <a href="https://twitter.com/ag_dubs">Ashley Williams</a>. Huge thanks to <a href="https://github.com/danvk">Dan Vanderkam</a>'s <a href="https://github.com/danvk/sfhistory/blob/master/viewer/nyc-lat-lons.js">geocoding work</a> on all of these images.</p>
   </div>
 </div>
+<script>
+window.mySwipe = new Swipe(document.getElementById('slider'), {
+  startSlide: 2,
+  speed: 400,
+  auto: 3000,
+  continuous: true,
+  disableScroll: false,
+  stopPropagation: false,
+  callback: function(pos) {
+
+      var i = bullets.length;
+      while (i--) {
+        bullets[i].className = ' ';
+      }
+      bullets[pos].className = 'on';
+
+    },
+  transitionEnd: function(index, elem) {}
+});
+var bullets = document.getElementById('position').getElementsByTagName('li');
+</script>
