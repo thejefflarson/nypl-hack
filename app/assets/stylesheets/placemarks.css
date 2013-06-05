@@ -1,52 +1,104 @@
 html {
-	background: black;
+  background: black;
 }
 
 .container {
-	background: black;
-	color: white;
-	font-family: Helvetica, Arial, sans-serif;
-	width: 100%;
+  background: black;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
 }
 
 .container a { color:#666; }
 
 img {
-	width: 33%;
-	float: left;
+  width: 100%;
+  float: left;
 }
 div {
 
 }
-.container p {
-	padding: 0px 10px 10px;
-	color: #ddd;
-	font-style: italic;
-	font-size: 12px;
-	line-height: 16px;
+p {
+  padding: 0px 10px 10px;
+  color: #ddd;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 16px;
 }
 h1 {
-	padding: 10px 10px 4px 10px;
-	font-family: Verdana, Helvetica, Arial, sans-serif;
-	font-size: 20px;
+  padding: 10px 10px 4px 10px;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 20px;
 }
 
 #logo {
-	float: right;
-	padding: 6px 10px 10px;
-	width: 30%;
+  float: right;
+  padding: 6px 10px 10px;
+  width: 30%;
 }
 
 .footer p {
-	padding: 10px;
-	width: 63%;
-	position: relative;
+  padding: 10px;
+  width: 63%;
+  position: relative;
+}
+/* sticky feet */
+html, body, #wrap { height: 100%; }
+
+body > #wrap {height: auto; min-height: 100%;}
+
+#main { padding-bottom: 150px; }  /* must be same height as the footer */
+
+#footer { 
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;}
+/* swipe */
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
 }
 
+#position {
+  text-align: center;
+  list-style: none;
+}
+
+#position li.on {
+  box-shadow:inset 0 1px 3px -1px #28b4ea,0 1px 2px rgba(0,0,0,.5);
+  background-color:#1293dc;
+  background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#1293dc),color-stop(100%,#0f6297));
+  background-image:-webkit-linear-gradient(top,#1293dc,#0f6297);
+  background-image:-moz-linear-gradient(top,#1293dc,#0f6297);
+  background-image:-ms-linear-gradient(top,#1293dc,#0f6297);
+  background-image:-o-linear-gradient(top,#1293dc,#0f6297);
+  background-image:linear-gradient(top,#1293dc,#0f6297)
+}
+#position li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: inset 0 1px 3px black,0 0 1px 1px #202020;
+  margin: 0 2px;
+  cursor: pointer;
+}
 /* reset */
 * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 /* clearfix */
 .clearfix {

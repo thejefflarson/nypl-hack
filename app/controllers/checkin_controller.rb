@@ -13,9 +13,9 @@ class CheckinController < ApplicationController
     access = Authtoken.where(:user_id => user_id).first
     str_token = access.access_token
 
-    puts obj
-    puts "#{id}, #{lat}, #{lng}"
-    puts placemark_url
+    #puts obj
+    #puts "#{id}, #{lat}, #{lng}"
+    #puts placemark_url
 
     reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
     http = Net::HTTP.new(reply_url.host, reply_url.port)
@@ -30,18 +30,16 @@ class CheckinController < ApplicationController
       "v" => 20130605
     )
 
-    puts body_data
+    #puts body_data
 
     request = Net::HTTP::Post.new(reply_url.request_uri)
     request['Content-Type'] = "application/x-www-form-urlencoded"
     response = http.request(request, body_data)
-    puts response.body
-
+    #puts response.body
 
     respond_to do |format|
       format.html { render text: "okay" }
       format.json { render json: json }
     end
-
   end
 end
