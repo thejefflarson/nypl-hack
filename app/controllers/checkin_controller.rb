@@ -1,5 +1,3 @@
-require "addressable/uri"
-
 class CheckinController < ApplicationController
   # POST /checkin
   def create
@@ -20,13 +18,16 @@ class CheckinController < ApplicationController
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    body_data = Addressable::URI.new
-    body_data.query_values = {:url => placemark_url, :CHECKIN_ID => id, :text => "Awesome!"}
+    body_data = URI.encode_www_form(
+      "url" => placemark_url,
+      "CHECKIN_ID" => id,
+      "text" => "Awesome!"
+    }
 
-    puts body_data.query_values
+    puts body_data
 
     request = Net::HTTP::Post.new(uri.request_uri)
-    http.request(request, body_data.query_values)
+    http.request(request, body_data)
 
     respond_to do |format|
       format.html { render text: "okay" }
