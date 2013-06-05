@@ -21,12 +21,14 @@ class CheckinController < ApplicationController
     body_data = URI.encode_www_form(
       "url" => placemark_url,
       "CHECKIN_ID" => id,
-      "text" => "Awesome!"
+      "text" => "Awesome!",
+      "v" => 20130605
     )
 
     puts body_data
 
     request = Net::HTTP::Post.new(reply_url.request_uri)
+    request['Content-Type'] = "application/x-www-form-urlencoded"
     http.request(request, body_data)
 
     respond_to do |format|
