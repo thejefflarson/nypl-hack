@@ -28,6 +28,10 @@
   .homepage .main-text {
   	width: 90%;
   }
+  .connect-button {
+  	width: 100%;
+  	font-size: 13px;
+  }
 }
 
 .homepage .main-text p {
