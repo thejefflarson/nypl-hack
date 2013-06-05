@@ -24,7 +24,7 @@ class CheckinController < ApplicationController
 
     body_data = URI.encode_www_form(
       "url" => placemark_url,
- sdlfkjwelkfjwekljfklwejf     "CHECKIN_ID" => id,
+      "CHECKIN_ID" => id,
       "text" => "Awesome!",
       "oauth_token" => str_token,
       "v" => 20130605
