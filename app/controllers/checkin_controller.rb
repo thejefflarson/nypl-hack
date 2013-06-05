@@ -10,7 +10,7 @@ class CheckinController < ApplicationController
     lng = json["venue"]["location"]["lng"]
     placemark_url = placemarks_url :q => "#{lat},#{lng}"
 
-    access = Accesstoken.where(:user_id = user_id).first
+    access = Authtoken.where(:user_id = user_id).first
     str_token = access.access_token
 
     puts obj

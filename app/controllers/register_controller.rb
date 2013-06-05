@@ -39,7 +39,7 @@ class RegisterController < ApplicationController
     user_id = json['response']['user']['id']
     puts user_id
 
-    Accesstoken.create(:user_id => user_id, :access_token => str_token)
+    Authtoken.create(:user_id => user_id, :access_token => str_token)
 
     respond_to do |format|
       format.html { render text: "Yay!\n#{str_token}" }
