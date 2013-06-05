@@ -7,17 +7,18 @@ class CheckinController < ApplicationController
     id = json["id"]
     lat = json["venue"]["location"]["lat"]
     lng = json["venue"]["location"]["lng"]
-    reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
 
     placemark_url = placemarks_url :q => "#{lat},#{lng}"
     puts obj
     puts "#{id}, #{lat}, #{lng}"
     puts placemark_url
 
+    reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
     http = Net::HTTP.new(reply_url.host, reply_url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    Net::HTTP.post_form(reply_url, {:url => placemark_url, :CHECKIN_ID => id, :text => "Awesome!"})
+
+    http.post_form(reply_url, {:url => placemark_url, :CHECKIN_ID => id, :text => "Awesome!"})
 
     respond_to do |format|
       format.html { render text: "okay" }
