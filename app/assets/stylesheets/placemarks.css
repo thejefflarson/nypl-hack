@@ -2,6 +2,15 @@ html {
   background: black;
 }
 
+h2 {
+  font-size: 70%;
+  line-height: 1.3em;
+  padding: 0px 10px 10px;
+  color: #ddd;
+  font-weight: 300;
+  font-style: italic;
+}
+
 #footer a { color:#666; }
 
 img {
@@ -12,8 +21,6 @@ p {
   padding: 0px 10px 10px;
   color: #ddd;
   font-style: italic;
-  font-size: 12px;
-  line-height: 16px;
 }
 h1 {
   padding: 10px 10px 4px 10px;
@@ -31,6 +38,8 @@ h1 {
   padding: 10px;
   width: 63%;
   position: relative;
+  font-size: 50%;
+  line-height: 1.3em;
 }
 /* sticky feet */
 html, body, #wrap { height: 100%; }
@@ -49,7 +58,8 @@ body > #wrap { height: auto; min-height: 100%;}
   position: fixed;
   bottom:0;
   background: black;
-  clear:both;}
+  clear:both;
+}
 /* swipe */
 .swipe {
   overflow: hidden;

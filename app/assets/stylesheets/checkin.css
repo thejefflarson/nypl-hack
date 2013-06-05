@@ -15,7 +15,13 @@
 	background-color: black;
 	padding: 10px 5px 20px;
 	color: white;
-	width: 40%;
+	width: 586px;
+}
+
+@media (max-width: 1000px) {
+  .homepage .main-text {
+  	width: 60%;
+  }
 }
 
 .homepage .main-text p {
@@ -45,13 +51,15 @@
 #masonjar img {
 	width: 380px;
 	opacity: 0.4;
+	filter: alpha(opacity=40);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 	padding: 20px;
 }
 
 .connect-button {
 	width: 200px;
 	color: white;
-	margin-left: 10px;
+	margin: 20px 20px 20px 10px;
 	text-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0;
 	cursor: pointer;
 	display: block;
