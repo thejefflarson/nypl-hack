@@ -10,6 +10,8 @@ class CheckinController < ApplicationController
     reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
 
     placemark_url = placemarks_url :q => "#{lat},#{lng}"
+    puts obj
+    puts "#{id}, #{lat}, #{lng}"
     puts placemark_url
 
     http = Net::HTTP.new(reply_url.host, reply_url.port)
