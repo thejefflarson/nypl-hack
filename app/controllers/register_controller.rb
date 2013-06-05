@@ -11,10 +11,9 @@ FOURSQ_PUSH_SECRET = 'XVTHZ2DZHCR2K5PZ3UBVQXBQUABKH3YO3BE5QUF4TEGHKTB5'
 #
 class RegisterController < ApplicationController
   def create
-    code = params['CODE']
     redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
 
-    uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{CLIENT_ID}&client_secret=#{CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
+    uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -26,7 +25,7 @@ class RegisterController < ApplicationController
     #puts access_token
 
     respond_to do |format|
-      format.html { render text: "Yay!\n#{token}" }
+      format.html { render text: "Yay!\n#{response['access_token']}" }
     end
   end
 end
