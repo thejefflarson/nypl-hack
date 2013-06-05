@@ -2,3 +2,16 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.homepage h1 {
+	font-family: 'Copse', serif;
+	background-color: black;
+	color: white;
+	font-size: 50px;
+	position: absolute;
+}
+
+.background img {
+	width: inherit;
+	opacity: 0.4;
+}
