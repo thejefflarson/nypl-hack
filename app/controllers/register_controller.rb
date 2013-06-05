@@ -21,7 +21,7 @@ class RegisterController < ApplicationController
     #puts access_token
 
     self_url = URI("https://api.foursquare.com/v2/users/self")
-    http = Net::HTTP.new(reply_url.host, reply_url.port)
+    http = Net::HTTP.new(self_url.host, self_url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     body_data = URI.encode_www_form(
