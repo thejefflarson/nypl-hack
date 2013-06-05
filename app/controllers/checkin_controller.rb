@@ -26,7 +26,7 @@ class CheckinController < ApplicationController
     puts body_data.query_values
 
     request = Net::HTTP::Post.new(uri.request_uri)
-    http.request(request), body_data.query_values)
+    http.request(request, body_data.query_values)
 
     respond_to do |format|
       format.html { render text: "okay" }
