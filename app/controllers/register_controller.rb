@@ -1,3 +1,5 @@
+require 'oauth2'
+
 #FOURSQ_CLIENT_ID = 'GBCU0L2D1WW0PYLSX4EMZSGJ0ZRV21FKNGUCD3SIXHDKKOZN'
 #FOURSQ_CLIENT_SECRET = 'HGSLEOP322JIMKTKHZZGI243D5YYQL5ED5MY0O5IJNWSTO24'
 #FOURSQ_PUSH_SECRET = 'AEDZX2JPWMVJR0ZREHEUGYGRDZS4ICM0WC0UX2E4IKAIKR0R'
@@ -10,18 +12,23 @@ FOURSQ_PUSH_SECRET = 'XVTHZ2DZHCR2K5PZ3UBVQXBQUABKH3YO3BE5QUF4TEGHKTB5'
 class RegisterController < ApplicationController
   def create
     code = params['CODE']
-    url = URI("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&code=#{code}&redirect_uri=https://mike.tig.as/nypl-hack/register_callback/")
 
     begin
-        wut = Net::HTTP.get(url)
+        client = OAuth2::Client.new(
+          FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET
+          :authorize_url => "/oauth2/authorize",
+          :token_url => "/oauth2/access_token",
+          :site => "https://foursquare.com/"
+        )
+
+        token = client.auth_code.get_token(code, :redirect_uri => "https://mike.tig.as/nypl-hack/register_callback")
     rescue
-        wut = nil
+        token = nil
     end
-    puts url
-    puts wut
+    puts token
 
     respond_to do |format|
-      format.html { render text: "Yay!\n#{wut}" }
+      format.html { render text: "Yay!\n#{token}" }
     end
   end
 end
