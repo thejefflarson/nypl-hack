@@ -20,19 +20,19 @@ class RegisterController < ApplicationController
     str_token = response['access_token']
     #puts access_token
 
-    self_url = URI("https://api.foursquare.com/v2/users/self")
-    http = Net::HTTP.new(self_url.host, self_url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
     body_data = URI.encode_www_form(
       "oauth_token" => str_token,
       "v" => 20130605
     )
-    puts body_data
 
-    request = Net::HTTP::Post.new(self_url.request_uri)
-    request['Content-Type'] = "application/x-www-form-urlencoded"
-    response = http.request(request, body_data)
+    self_url = URI("https://api.foursquare.com/v2/users/self?#{body_data}")
+    http = Net::HTTP.new(self_url.host, self_url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(self_url.request_uri)
+    response = http.request(request)
     puts response.body
 
     #json = JSON.parse(response.body)
