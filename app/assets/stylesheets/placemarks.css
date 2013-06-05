@@ -17,7 +17,7 @@ img {
 div {
 
 }
-.container p {
+p {
   padding: 0px 10px 10px;
   color: #ddd;
   font-style: italic;
@@ -41,6 +41,18 @@ h1 {
   width: 63%;
   position: relative;
 }
+/* sticky feet */
+html, body, #wrap { height: 100%; }
+
+body > #wrap {height: auto; min-height: 100%;}
+
+#main { padding-bottom: 150px; }  /* must be same height as the footer */
+
+#footer { 
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;}
 /* swipe */
 .swipe {
   overflow: hidden;
