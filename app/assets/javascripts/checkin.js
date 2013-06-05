@@ -10,7 +10,7 @@ $(document).ready(function(){
 	});
 
 	$('.connect-button').click(function(){
-		window.location.href = "https://foursquare.com/app/nypl-time-traveller/GBCU0L2D1WW0PYLSX4EMZSGJ0ZRV21FKNGUCD3SIXHDKKOZN";
+		window.location.href = "https://foursquare.com/app/nypl-time-traveller/CEWXPJBX0AFPI0Y3YC1JLKKQON4OOYHKSYFERVPTJDMK0MF5";
 	})
 
 })
