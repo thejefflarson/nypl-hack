@@ -8,8 +8,17 @@ FOURSQ_CLIENT_ID = 'YWTUTS3OL0HWSULMMURGHIU51QDQ4LS5RLGXJDGV3NENV1JE'
 FOURSQ_CLIENT_SECRET = 'RXXELPAKSE4AXYADZIRHFHC5HIK4OIP5A115H1VHV0OLANCE'
 FOURSQ_PUSH_SECRET = 'XVTHZ2DZHCR2K5PZ3UBVQXBQUABKH3YO3BE5QUF4TEGHKTB5'
 
+
 class RegisterController < ApplicationController
   def create
+    client = OAuth2::Client.new(FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET,
+      :site => 'http://foursquare.com/v2/',
+      :request_token_path => "/oauth2/request_token",
+      :access_token_path  => "/oauth2/access_token",
+      :authorize_path     => "/oauth2/authenticate?response_type=code",
+      :parse_json => true
+    )
+
     redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
 
     uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
