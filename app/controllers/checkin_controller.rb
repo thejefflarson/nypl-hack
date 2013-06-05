@@ -29,7 +29,9 @@ class CheckinController < ApplicationController
 
     request = Net::HTTP::Post.new(reply_url.request_uri)
     request['Content-Type'] = "application/x-www-form-urlencoded"
-    http.request(request, body_data)
+    response = http.request(request, body_data)
+    puts response.body
+
 
     respond_to do |format|
       format.html { render text: "okay" }
