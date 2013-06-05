@@ -10,6 +10,7 @@ gem 'rgeo'
 gem 'rgeo-shapefile'
 gem 'activerecord-postgis-adapter'
 
+gem 'oauth2'
 gem 'foursquare2'
 
 # Gems used only for assets and not required
