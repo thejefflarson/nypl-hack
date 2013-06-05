@@ -4,7 +4,7 @@ FOURSQ_CLIENT_SECRET = ENV['FOURSQ_CLIENT_SECRET']
 class RegisterController < ApplicationController
   def create
     # TODO
-    redirect_uri = "https://mike.tig.as/nypl-hack/register_callback"
+    redirect_uri = "https://mike.tig.as/nypl-hack/register_callback/"
 
     uri = URI.parse("https://foursquare.com/oauth2/access_token?client_id=#{FOURSQ_CLIENT_ID}&client_secret=#{FOURSQ_CLIENT_SECRET}&grant_type=authorization_code&redirect_uri=#{redirect_uri}&code=" + params[:code])
     http = Net::HTTP.new(uri.host, uri.port)
