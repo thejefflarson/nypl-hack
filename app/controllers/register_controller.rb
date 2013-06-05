@@ -15,7 +15,7 @@ class RegisterController < ApplicationController
 
     begin
         client = OAuth2::Client.new(
-          FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET
+          FOURSQ_CLIENT_ID, FOURSQ_CLIENT_SECRET,
           :authorize_url => "/oauth2/authorize",
           :token_url => "/oauth2/access_token",
           :site => "https://foursquare.com/"
