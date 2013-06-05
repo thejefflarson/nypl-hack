@@ -13,7 +13,16 @@
 	top: 180px;
 	left: 3%;
 	background-color: black;
-	padding: 0px 5px 11px;
+	padding: 10px 5px 20px;
+	color: white;
+	width: 40%;
+}
+
+.homepage .main-text p {
+	font-style: normal;
+}
+
+.homepage .main-text p a {
 	color: white;
 }
 
@@ -25,13 +34,8 @@
 	line-height: 46px;
 }
 
-.homepage p, .homepage .connect-button {
-	margin: 0 0 0 10px;
-}
-
-h1 span {
-	font-size: 30px;
-	color: #ccc;
+.homepage p {
+	margin: 10px 0 0 0;
 }
 
 #masonjar {
@@ -47,6 +51,7 @@ h1 span {
 .connect-button {
 	width: 200px;
 	color: white;
+	margin-left: 10px;
 	text-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0;
 	cursor: pointer;
 	display: block;
