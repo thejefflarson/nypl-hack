@@ -7,12 +7,17 @@ class CheckinController < ApplicationController
     id = json["id"]
     lat = json["venue"]["location"]["lat"]
     lng = json["venue"]["location"]["lng"]
-    url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
+    reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
 
-    ours = placemarks_url :q => "#{lat},#{lng}"
-    p Net::HTTP.post_form(url, {:url => ours, :CHECKIN_ID => id, :text => "Awesome!"}) rescue Errno::ECONNRESET
+    placemark_url = placemarks_url :q => "#{lat},#{lng}"
+    puts placemark_url
 
-    respond_to do |format| 
+    http = Net::HTTP.new(reply_url.host, reply_url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    Net::HTTP.post_form(reply_url, {:url => placemark_url, :CHECKIN_ID => id, :text => "Awesome!"})
+
+    respond_to do |format|
       format.html { render text: "okay" }
       format.json { render json: json }
     end
