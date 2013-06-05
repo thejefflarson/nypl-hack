@@ -8,12 +8,30 @@
 	margin: 0 auto;
 }
 
+.homepage .main-text {
+	position: absolute;
+	top: 180px;
+	left: 3%;
+	background-color: black;
+	padding: 0px 5px 11px;
+	color: white;
+}
+
 .homepage h1 {
 	font-family: 'Copse', serif;
-	background-color: black;
+	background-color: transparent;
 	color: white;
 	font-size: 50px;
-	position: absolute;
+	line-height: 46px;
+}
+
+.homepage p, .homepage .connect-button {
+	margin: 0 0 0 10px;
+}
+
+h1 span {
+	font-size: 30px;
+	color: #ccc;
 }
 
 #masonjar {
@@ -21,7 +39,32 @@
 }
 
 #masonjar img {
-	width: 30%;
+	width: 380px;
 	opacity: 0.4;
 	padding: 20px;
+}
+
+.connect-button {
+	width: 200px;
+	color: white;
+	text-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0;
+	cursor: pointer;
+	display: block;
+	font: bold 11px/30px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	height: 30px;
+	padding: 0 10px;
+	text-align: center;
+	text-transform: uppercase;
+	background: #a0da00;
+	background: -moz-linear-gradient(top, #a7e300, #99d100);
+	background: -o-linear-gradient(top, #a7e300, #99d100);
+	background: -webkit-linear-gradient(top, #a7e300, #99d100);
+	border: 1px solid #87b800;
+	color: #ffffff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0px;
 }
