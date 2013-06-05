@@ -2,21 +2,11 @@ html {
   background: black;
 }
 
-.container {
-  background: black;
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  width: 100%;
-}
-
-.container a { color:#666; }
+#footer a { color:#666; }
 
 img {
   width: 100%;
   float: left;
-}
-div {
-
 }
 p {
   padding: 0px 10px 10px;
@@ -37,7 +27,7 @@ h1 {
   width: 30%;
 }
 
-.footer p {
+#footer p {
   padding: 10px;
   width: 63%;
   position: relative;
@@ -45,9 +35,15 @@ h1 {
 /* sticky feet */
 html, body, #wrap { height: 100%; }
 
-body > #wrap {height: auto; min-height: 100%;}
+body > #wrap { height: auto; min-height: 100%;}
 
-#main { padding-bottom: 150px; }  /* must be same height as the footer */
+#main { 
+  padding-bottom: 150px;
+  background: black;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  /*width: 100%;*/
+}  /* must be same height as the footer */
 
 #footer { 
   position: relative;
@@ -100,18 +96,14 @@ body > #wrap {height: auto; min-height: 100%;}
   padding: 0;
   margin: 0;
 }
-/* clearfix */
-.clearfix {
-  *zoom: 1;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-.clearfix:after {
+/* CLEAR FIX*/
+.clearfix:after {content: ".";
+  display: block;
+  height: 0;
   clear: both;
-}
+  visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
