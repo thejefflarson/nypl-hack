@@ -18,9 +18,15 @@
 	width: 586px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1000px) and (min-width:480px) {
   .homepage .main-text {
   	width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage .main-text {
+  	width: 80%;
   }
 }
 
