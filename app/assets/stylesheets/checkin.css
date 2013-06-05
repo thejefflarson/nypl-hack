@@ -18,19 +18,20 @@
 	width: 586px;
 }
 
-@media (max-width: 1000px) and (min-width:480px) {
+@media screen and (max-width: 1000px) and (min-width:480px) {
   .homepage .main-text {
   	width: 60%;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .homepage .main-text {
   	width: 90%;
   }
-  .connect-button {
-  	width: 100%;
-  	font-size: 13px;
+  .homepage .connect-button {
+  	width: 85%;
+  	font-size: 14px;
+  	padding: 10px;
   }
 }
 
