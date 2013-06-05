@@ -2,3 +2,26 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.homepage {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.homepage h1 {
+	font-family: 'Copse', serif;
+	background-color: black;
+	color: white;
+	font-size: 50px;
+	position: absolute;
+}
+
+#masonjar {
+	background-color: black;
+}
+
+#masonjar img {
+	width: 30%;
+	opacity: 0.4;
+	padding: 20px;
+}

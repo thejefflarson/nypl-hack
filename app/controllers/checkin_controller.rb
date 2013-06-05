@@ -5,9 +5,13 @@ class CheckinController < ApplicationController
     json = JSON.parse(obj)
 
     id = json["id"]
+    user_id = json["user"]["id"]
     lat = json["venue"]["location"]["lat"]
     lng = json["venue"]["location"]["lng"]
     placemark_url = placemarks_url :q => "#{lat},#{lng}"
+
+    access = Authtoken.where(:user_id => user_id).first
+    str_token = access.access_token
 
     puts obj
     puts "#{id}, #{lat}, #{lng}"
@@ -21,7 +25,8 @@ class CheckinController < ApplicationController
     body_data = URI.encode_www_form(
       "url" => placemark_url,
       "CHECKIN_ID" => id,
-      "text" => "Awesome!",
+      "text" => "See historical photos of nearby buildings from #{Placemark.gimme_photos(lat, lng).map(&:year).uniq.to_sentence}.",
+      "oauth_token" => str_token,
       "v" => 20130605
     )
 

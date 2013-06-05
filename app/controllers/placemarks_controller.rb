@@ -1,13 +1,14 @@
 class PlacemarksController < ApplicationController
   # GET /placemarks
   # GET /placemarks.json
+
   def index
     puts params[:q]
     if params[:q]
       latlon = params[:q]
       lat = latlon.split(',').first
       lon = latlon.split(',').last
-      @placemarks = Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(#{lat.to_f}, #{lon.to_f}),4269), latlon) ASC").limit(3)
+      @placemarks = Placemark.gimme_photos lat, lon
     else
       @placemarks = Placemark.all
     end
