@@ -26,7 +26,7 @@ class CheckinController < ApplicationController
 
     puts body_data
 
-    request = Net::HTTP::Post.new(uri.request_uri)
+    request = Net::HTTP::Post.new(reply_url.request_uri)
     http.request(request, body_data)
 
     respond_to do |format|
