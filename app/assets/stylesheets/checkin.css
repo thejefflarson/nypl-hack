@@ -3,6 +3,11 @@
   They will automatically be included in application.css.
 */
 
+.homepage {
+	width: 90%;
+	margin: 0 auto;
+}
+
 .homepage h1 {
 	font-family: 'Copse', serif;
 	background-color: black;
@@ -11,7 +16,12 @@
 	position: absolute;
 }
 
-.background img {
-	width: inherit;
+#masonjar {
+	background-color: black;
+}
+
+#masonjar img {
+	width: 30%;
 	opacity: 0.4;
+	padding: 20px;
 }
