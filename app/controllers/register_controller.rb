@@ -14,7 +14,7 @@ class RegisterController < ApplicationController
 
     begin
         wut = Net::HTTP.get(url)
-    rescue Errno::ECONNRESET
+    rescue
         wut = nil
     end
     puts url
