@@ -5,7 +5,7 @@
 	width: 100%;
 }
 img {
-	float: left;
+	float: right;
 	width: 33%;
 }
 div {
@@ -15,9 +15,18 @@ div {
 	width: 25%;
 }
 h1 {
-	padding: 20px;
+	padding: 15px;
 	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 1.5em;
 }
+
+.footer p {
+	padding: 10px;
+	float: left;
+	width: 66%;
+	color: #ddd;
+}
+
 /* reset */
 * {
 	padding: 0;
