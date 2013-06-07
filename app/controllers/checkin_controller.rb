@@ -10,32 +10,45 @@ class CheckinController < ApplicationController
     lng = json["venue"]["location"]["lng"]
     placemark_url = placemarks_url :q => "#{lng},#{lat}"
 
-    access = Authtoken.where(:user_id => user_id).order("created_at DESC").first
-    str_token = access.access_token
+    # Only send a reply if we're in 
+    # SELECT ST_Expand(ST_Extent(latlon), 0.01)  FROM "placemarks";
+    #...
+    # SELECT ST_Contains(
+    #   ST_SetSRID((SELECT ST_Expand(ST_Extent(latlon), 0.01)  FROM "placemarks"), 4269),
+    #   ST_SetSRID(ST_MakePoint(-74.0, 40.75), 4269)
+    # );
+    lat_f = lat.to_f
+    lng_f = lng.to_f
+    if (lat_f >= 40.497024) && (lng_f >= -74.271388) && (lat_f <= 40.927584) && (lng_f  <= -73.679691)
+      access = Authtoken.where(:user_id => user_id).order("created_at DESC").first
+      if access
+        str_token = access.access_token
 
-    #puts obj
-    #puts "#{id}, #{lat}, #{lng}"
-    #puts placemark_url
+        #puts obj
+        #puts "#{id}, #{lat}, #{lng}"
+        #puts placemark_url
 
-    reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
-    http = Net::HTTP.new(reply_url.host, reply_url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        reply_url = URI("https://api.foursquare.com/v2/checkins/#{id}/reply")
+        http = Net::HTTP.new(reply_url.host, reply_url.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    body_data = URI.encode_www_form(
-      "url" => placemark_url,
-      "CHECKIN_ID" => id,
-      "text" => "See historical photos of nearby buildings from #{Placemark.gimme_photos(lat, lng).map(&:year).uniq.sort.to_sentence}.",
-      "oauth_token" => str_token,
-      "v" => 20130605
-    )
+        body_data = URI.encode_www_form(
+          "url" => placemark_url,
+          "CHECKIN_ID" => id,
+          "text" => "See historical photos of nearby buildings from #{Placemark.gimme_photos(lat, lng).map(&:year).uniq.sort.to_sentence}.",
+          "oauth_token" => str_token,
+          "v" => 20130605
+        )
 
-    #puts body_data
+        #puts body_data
 
-    request = Net::HTTP::Post.new(reply_url.request_uri)
-    request['Content-Type'] = "application/x-www-form-urlencoded"
-    response = http.request(request, body_data)
-    #puts response.body
+        request = Net::HTTP::Post.new(reply_url.request_uri)
+        request['Content-Type'] = "application/x-www-form-urlencoded"
+        response = http.request(request, body_data)
+        #puts response.body
+      end
+    end
 
     respond_to do |format|
       format.html { render text: "okay" }
