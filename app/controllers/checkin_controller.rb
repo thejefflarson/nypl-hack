@@ -19,7 +19,8 @@ class CheckinController < ApplicationController
     # );
     lat_f = lat.to_f
     lng_f = lng.to_f
-    if (lat_f >= 40.497024) && (lng_f >= -74.271388) && (lat_f <= 40.927584) && (lng_f  <= -73.679691)
+    if (((lat_f >= 40.55) && (lng_f >= -74.05) && (lat_f <= 40.94) && (lng_f  <= -73.679691)) ||# all but staten isl
+       ((lat_f >= 40.5) && (lng_f >= -74.25) && (lat_f <= 40.65) && (lng_f  <= -74.05)))# staten isl
       access = Authtoken.where(:user_id => user_id).order("created_at DESC").first
       if access
         Thread.new do
