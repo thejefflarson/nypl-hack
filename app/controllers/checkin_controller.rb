@@ -10,19 +10,24 @@ class CheckinController < ApplicationController
     lng = json["venue"]["location"]["lng"]
     placemark_url = placemarks_url :q => "#{lng},#{lat}"
 
-    # Only send a reply if we're in 
-    # SELECT ST_Expand(ST_Extent(latlon), 0.01)  FROM "placemarks";
-    #...
-    # SELECT ST_Contains(
-    #   ST_SetSRID((SELECT ST_Expand(ST_Extent(latlon), 0.01)  FROM "placemarks"), 4269),
-    #   ST_SetSRID(ST_MakePoint(-74.0, 40.75), 4269)
-    # );
-    lat_f = lat.to_f
-    lng_f = lng.to_f
-    if (((lat_f >= 40.55) && (lng_f >= -74.05) && (lat_f <= 40.94) && (lng_f  <= -73.679691)) ||# all but staten isl
-       ((lat_f >= 40.5) && (lng_f >= -74.25) && (lat_f <= 40.65) && (lng_f  <= -74.05)))# staten isl
+    #lat_f = lat.to_f
+    #lng_f = lng.to_f
+    #if (((lat_f >= 40.55) && (lng_f >= -74.05) && (lat_f <= 40.94) && (lng_f  <= -73.679691)) ||# all but staten isl
+    #   ((lat_f >= 40.5) && (lng_f >= -74.25) && (lat_f <= 40.65) && (lng_f  <= -74.05)))# staten isl
+    begin
+      query = ActiveRecord::Base.send(:sanitize_sql_array, [
+        "SELECT ST_Contains(shape,ST_SetSRID(ST_MakePoint(%f, %f), 4269)) FROM \"boundaries\" WHERE slug='new-york-city'",
+        lng.to_f,
+        lat.to_f
+      ])
+      result = Authtoken.connection.exec_query(query)
+      latlon_in_nyc = (result.rows[0][0] == 't')
+    rescue
+      latlon_in_nyc = false
+    end
+    if latlon_in_nyc
       access = Authtoken.where(:user_id => user_id).order("created_at DESC").first
-      if access
+      if !access.nil?
         Thread.new do
           str_token = access.access_token
 

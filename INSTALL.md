@@ -23,6 +23,7 @@ bundle install
 rake db:create
 echo "create extension postgis;" | psql -d nypl_hack
 rake db:migrate
+cat db/shape.sql | psql -d nypl_hack
 rake data:load
 ```
 
