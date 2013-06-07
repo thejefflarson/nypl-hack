@@ -29,7 +29,7 @@ class Placemark < ActiveRecord::Base
   end
 
   def self.gimme_photos(lat, lon)
-    Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(#{lat.to_f}, #{lon.to_f}),4269), latlon) ASC").limit(8)
+    Placemark.order("ST_Distance(ST_SetSRID(ST_MakePoint(#{lat.to_f}, #{lon.to_f}),4269), latlon) ASC").limit(6)
   end
 
   private

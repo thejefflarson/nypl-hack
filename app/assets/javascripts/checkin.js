@@ -14,13 +14,15 @@ $(document).ready(function(){
 	})
 
 	if (getURLParameter('success') == 1){
-		$('.connect-button').text("Success! You've connected!")
+		$('.connect-button').text("Success! You've connected!");
+		$('.connected').text("Your Foursquare account is now connected!").show().css('display', 'block');
+		setTimeout(function() { $('.connected').fadeTo("slow", 0) }, 2000);
+		//.delay(2000).fadeTo("slow", );
 	} else { }
 
 	function getURLParameter(name) {
-	    return decodeURIComponent(
-	        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-	    );
+			return decodeURIComponent(
+				(RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+			);
 	}
-
 })

@@ -97,3 +97,18 @@
 	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0px;
 }
+
+.connected {
+  display:none;
+  position:absolute;
+  background-color: papayawhip;
+  left:0;right:0;width:100%;
+  top: 0;
+  padding: 0 5em 0 5em;
+  height:2em;
+  z-index: 10000;
+	font: bold 14px/26px "Helvetica Neue",Helvetica,Arial,sans-serif;
+	-webkit-opacity: 0.9;
+	-moz-opacity: 0.9;
+	filter:alpha(opacity=90);
+}
