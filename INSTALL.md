@@ -23,6 +23,7 @@ bundle install
 rake db:create
 echo "create extension postgis;" | psql -d nypl_hack
 rake db:migrate
+cat db/shape.sql | psql -d nypl_hack
 rake data:load
 ```
 
@@ -33,13 +34,19 @@ use passenger/unicorn/etc)
 ```
 export FOURSQ_CLIENT_ID="abcde..."
 export FOURSQ_CLIENT_SECRET="abcde..."
+export GOOGLE_ANALYTICS_ID="UA-123456-1"
+export GOOGLE_ANALYTICS_DOMAIN="example.com"
 
 #...or when you launch unicorn or "rails server"...
 FOURSQ_CLIENT_ID="abcde..." \
 FOURSQ_CLIENT_SECRET="abcde..." \
+GOOGLE_ANALYTICS_ID="UA-123456-1" \
+GOOGLE_ANALYTICS_DOMAIN="example.com" \
 rails s
 # or
 FOURSQ_CLIENT_ID="abcde..." \
 FOURSQ_CLIENT_SECRET="abcde..." \
+GOOGLE_ANALYTICS_ID="UA-123456-1" \
+GOOGLE_ANALYTICS_DOMAIN="example.com" \
 unicorn_rails -c config/unicorn.rb -D -E production
 ```
