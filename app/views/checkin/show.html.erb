@@ -1,3 +1,9 @@
+<style type="text/css">
+#logo_sm {
+    width:100px;
+    height:64px;
+}
+</style>
 <div class="homepage">
 	<div id="masonjar" class="background">
 		<img class="box" src="http://images.nypl.org/index.php?id=712651f&t=w"/>
@@ -16,6 +22,8 @@
 		<p>After connecting your Foursquare account to our app, just go about your day and as you check into each venue, we'll tell you if you're close to a historical NYC photograph. If you are, we'll show you in your check-in!</p>
 
 		<div class="connect-button">Connect to Foursquare</div>
+
+		<p style="float:right;margin-top:0"><%= image_tag 'NYPL_logo_400.jpg', :id=>"logo_sm", :size=>"100x64" %></span>
 
 		<p class="italics">Project created at the NYPL Historical Geolocation Hackathon by <a href="https://twitter.com/thejefflarson">Jeff Larson</a>, <a href="https://twitter.com/mtigas">Mike Tigas</a>, <a href="https://twitter.com/sisiwei">Sisi Wei</a> and <a href="https://twitter.com/ag_dubs">Ashley Williams</a>. See the <a href="https://github.com/thejefflarson/nypl-hack">Github repo</a>. Huge thanks to <a href="https://github.com/danvk">Dan Vanderkam</a>'s <a href="https://github.com/danvk/sfhistory/blob/master/viewer/nyc-lat-lons.js">geocoding work</a> on all of these images.</p>
 	</div>
