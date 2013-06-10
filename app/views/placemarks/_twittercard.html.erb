@@ -1,8 +1,8 @@
-<meta name="twitter:card" content="gallery">
+<meta name="twitter:card" content="photo">
 <meta name="twitter:creator" content="@nypl_labs">
 <meta name="twitter:title" content="NYPL Time Traveller">
 <meta name="twitter:description" content="The goal of the Photographic Views of New York City collection was 'to document the changing face of New York City' structures and buildings. Now you can see 1870s to 1970s NYC for yourself as you travel through the city, by connecting to us through Foursquare.
 After connecting your Foursquare account to our app, just go about your day and as you check into each venue, we'll tell you if you're close to a historical NYC photograph. If you are, we'll show you in your check-in!">
-<% @placemarks.first(4).each_with_index do |placemark,index| %>
-	<meta name="twitter:image<%= index %>" content="<%= placemark.getFullURL %>">
-<% end %>
+<!--<% @placemarks.first(1).each_with_index do |placemark,index| %>-->
+	<meta name="twitter:image:src" content="<%= placemark.getFullURL %>">
+<!--<% end %>-->
