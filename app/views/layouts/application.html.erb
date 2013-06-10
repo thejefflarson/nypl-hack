@@ -5,6 +5,11 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width">
+  <% if @placemarks %>
+  	<%= render :partial => 'placemarks/twittercard', :locals => {:placemarks => @placemarks} %>
+  <%else%>
+  	<%= render :partial => 'placemarks/app' %>
+ <% end %>
   <link href='https://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
   <% if ENV['GOOGLE_ANALYTICS_ID'] && ENV['GOOGLE_ANALYTICS_DOMAIN'] %>
   <script>
