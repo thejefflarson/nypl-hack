@@ -10,7 +10,10 @@
             <a href="<%= placemark.getFullURL %>">
               <img src="<%= placemark.getFullURL %>"/>
             </a>
-            <div class="caption"><strong>Year:</strong> <%= placemark.year %></div>
+            <div class="caption">
+              <strong>Year:</strong> <%= placemark.year %> ||
+              <strong><a href="http://maps.google.com/?q=<%= placemark.latlon.y.to_s + ',' + placemark.latlon.x.to_s %>">Map</a></strong>
+            </div>
           </div>
         <% end %>
       </div>

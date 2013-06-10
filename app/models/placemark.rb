@@ -12,6 +12,11 @@ class Placemark < ActiveRecord::Base
     errors.add(:slug, "not a link") if resp.empty?
   end
 
+  def getLatLonString
+    latlon
+    #.to_s.slice!(7..25).gsub(" ", ",")
+  end
+
   def getDetailsURL
     if slug[slug.length-1] == 'a'
       "http://digitalgallery.nypl.org/nypldigital/id?" + slug.delete('-a')
