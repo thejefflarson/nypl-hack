@@ -1,8 +1,12 @@
 <div id="wrap">
 
   <div id="main" class="clearfix">
-    <h1>Historical Time Traveller</h1>
-    <h2>Tap any image for a larger view.</h2>
+    <div>
+      <h1>Historical Time Traveller
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://mike.tig.as/nypl-hack/placemarks?q=<%= @placemarks.first.latlon.y.to_s + ',' + @placemarks.first.latlon.x.to_s %>" data-lang="en" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></h1>
+      <h2>Tap any image for a larger view.</h2>
+                
     <div id='slider' class='swipe'>
       <div class="clearfix swipe-wrap">
         <% @placemarks.each do |placemark| %>
@@ -11,8 +15,10 @@
               <img src="<%= placemark.getFullURL %>"/>
             </a>
             <div class="caption">
-              <strong>Year:</strong> <%= placemark.year %> ||
-              <strong><a href="http://maps.google.com/?q=<%= placemark.latlon.y.to_s + ',' + placemark.latlon.x.to_s %>">Map</a></strong>
+              <div>
+                <strong>Year:</strong> <%= placemark.year %> ||
+                <strong><a href="http://maps.google.com/?q=<%= placemark.latlon.y.to_s + ',' + placemark.latlon.x.to_s %>">Map</a></strong>
+              </div>
             </div>
           </div>
         <% end %>
